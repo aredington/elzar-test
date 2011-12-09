@@ -1,8 +1,10 @@
+require 'bundler/capistrano'
+
 set :application, "elzar-test"
-set :repository,  ""
+set :repository,  "."
 set :deploy_via, :copy
 
-#set :scm, :git
+set :scm, :git
 set :user, 'deploy'
 set :deploy_to, "/var/www/apps/#{application}"
 default_run_options[:pty] = true

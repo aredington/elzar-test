@@ -1,7 +1,7 @@
 source :rubygems
 
 gem 'rails', '3.1.1'
-gem "sqlite3"
+gem "mysql"
 gem 'haml', '3.1.3'
 gem 'configatron', '2.8.3'
 gem 'airbrake', '~> 3.0.4'
