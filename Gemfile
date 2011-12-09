@@ -21,6 +21,8 @@ group "development" do
 end
 
 group "development", "test" do
+  gem 'capistrano', '2.9.0'
+  gem 'capistrano-ext', '1.2.1'
   gem 'capybara', '~> 1.1.1'
   gem 'selenium-webdriver', '~> 2.5.0'
   gem 'rspec-rails', '~> 2.6.0'
