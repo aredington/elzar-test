@@ -25,3 +25,23 @@ role :db,  "172.25.5.5", :primary => true
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+
+after "deploy:setup", "elzar_test:copy_shared_db_config"
+after "deploy:symlink", "elzar_test:symlink_shared_db_config"
+before "deploy:migrate", "elzar_test:ensure_db_created"
+
+namespace :elzar_test do
+  task :copy_shared_db_config do
+    run "mkdir -p #{shared_path}/config"
+    #Capistrano::Configuration::Actions::FileTransfer.upload
+    upload("config/database.example.yml", "#{shared_path}/config/database.yml", :via => :scp)
+  end
+
+  task :ensure_db_created do
+    run "cd #{release_path} && #{rake} db:create"
+  end
+
+  task :symlink_shared_db_config do
+    run "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+  end
+end

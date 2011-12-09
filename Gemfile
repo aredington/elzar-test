@@ -7,6 +7,7 @@ gem 'configatron', '2.8.3'
 gem 'airbrake', '~> 3.0.4'
 gem 'factory_girl_rails', '1.2.0'
 gem 'jquery-rails', '1.0.14'
+gem 'therubyracer', '0.9.9'
 
 # Gems used only for assets and not required
 # in production environments by default.
