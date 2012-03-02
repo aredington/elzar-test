@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 
-set :application, "elzar-test"
+set :application, "elzar_test"
 set :repository,  "."
 set :deploy_via, :copy
 
@@ -38,7 +38,7 @@ namespace :elzar_test do
   end
 
   task :ensure_db_created do
-    run "cd #{release_path} && #{rake} db:create"
+    run "cd #{current_path}; #{rake} RAILS_ENV=#{rails_env} db:create"
   end
 
   task :symlink_shared_db_config do
